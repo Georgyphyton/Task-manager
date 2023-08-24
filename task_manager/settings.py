@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'task_manager',
     'django_bootstrap5',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
+FIXTURE_DIRS = ['fixtures']
+AUTH_USER_MODEL = 'users.CustomUser'
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en-us', gettext_lazy('English')),

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% block title %}
+{% trans "Create user" %}
+{% endblock %}
+{% block content %}
+<h1 class="my-4">Регистрация</h1>
+<form action="{% url 'create_user' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {% bootstrap_form form %}
+    </div>
+    <input class="btn btn-primary" type="submit" value="Зарегистрировать">
+</form>
+{% endblock %}
