@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from users.models import CustomUser
 from users.forms import CreateUserForm
@@ -10,6 +10,7 @@ class TestUsers(TestCase):
     fixtures = ['users.json']
 
     def setUp(self):
+        self.client = Client()
         self.register_url = reverse_lazy('create_user')
         self.login_url = reverse_lazy('login')
         self.users_url = reverse_lazy('users')
@@ -18,9 +19,13 @@ class TestUsers(TestCase):
         self.update_pk1_url = reverse_lazy('update_user', kwargs={'pk': 1})
         self.delete_pk1_url = reverse_lazy('delete_user', kwargs={'pk': 1})
         self.delete_pk2_url = reverse_lazy('delete_user', kwargs={'pk': 2})
-        with open(os.path.join('fixtures', 'test_user.json')) as user:
-            self.test_user = json.load(user)
+        with open(os.path.join('fixtures', 'test_user.json')) as file:
+            self.test_user = json.load(file)
         return super().setUp()
+
+    def test_index(self):
+        response = self.client.get(self.users_url)
+        self.assertEqual(response.status_code, 200)
 
     def test_register(self):
         response = self.client.get(self.register_url)
@@ -44,6 +49,7 @@ class TestUsers(TestCase):
         self.assertEqual(len(user_from.errors), 3)
 
     def test_update_page(self):
+        self.client.force_login(self.user1)
         response = self.client.get(self.update_pk1_url)
         self.assertEqual(response.status_code, 200)
         response = self.client.post(self.update_pk1_url, self.test_user)
@@ -55,6 +61,7 @@ class TestUsers(TestCase):
         self.assertEqual(self.user.last_name, self.test_user.get('last_name'))
 
     def test_delete_page(self):
+        self.client.force_login(self.user1)
         response = self.client.get(self.delete_pk1_url)
         self.assertEqual(response.status_code, 200)
         response = self.client.post(self.delete_pk1_url)
@@ -62,4 +69,3 @@ class TestUsers(TestCase):
         self.assertEqual(CustomUser.objects.count(), 1)
         with self.assertRaises(CustomUser.DoesNotExist):
             CustomUser.objects.get(pk=1)
-

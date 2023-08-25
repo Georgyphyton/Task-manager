@@ -2,15 +2,15 @@
 {% load django_bootstrap5 %}
 {% load i18n %}
 {% block title %}
-{% trans "Create user" %}
+{% trans "Create status" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Регистрация</h1>
+<h1 class="my-4">Создать статус</h1>
 <form method="post">
     {% csrf_token %}
     <div class="mb-3">
         {% bootstrap_form form %}
     </div>
-    <input class="btn btn-primary" type="submit" value="Зарегистрировать">
+    <input class="btn btn-primary" type="submit" value="Создать">
 </form>
 {% endblock %}

@@ -1,14 +1,22 @@
+MANAGE := poetry run python manage.py
+
 install:
 	poetry install
 
 run:
-	poetry run python3 manage.py runserver
+	$(MANAGE) runserver
 
 migration:
-	poetry run python3 manage.py makemigrations
+	$(MANAGE) makemigrations
 
-migrate:
-	poetry run python3 manage.py migrate
+omigrate:
+	$(MANAGE) migrate
 
 shell:
-	poetry run python manage.py shell
+	$(MANAGE) shell
+
+test:
+	$(MANAGE) test
+
+lint:
+	poetry run flake8

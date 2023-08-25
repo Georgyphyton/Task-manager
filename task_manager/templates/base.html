@@ -16,6 +16,7 @@
                 <a class="nav-link" href="{% url 'users' %}">{% trans "Users" %}</a>
               </li>
               {% if request.user.is_authenticated %}
+              <li class="nav-item"> <a class="nav-link" href="{% url 'statuses' %}">{% trans "Statuses" %}</a>
               <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
               {% else %}
                 <li class="nav-item">
