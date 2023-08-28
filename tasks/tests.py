@@ -109,4 +109,4 @@ class Testtasks(TestCase):
         response = self.client.post(self.delete_pk2_url)
         self.assertEqual(Tasks.objects.count(), task_count)
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn('Задачу может удалить только ее автор', messages)
+        self.assertIn('A task can only be deleted by its author', messages)
