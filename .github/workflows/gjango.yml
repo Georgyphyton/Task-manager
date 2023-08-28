@@ -29,3 +29,4 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE }}
         with:
           coverageCommand: make test-coverage
+          debug: true
