@@ -5,6 +5,9 @@ from statuses.forms import CreateStatusForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from task_manager.mixins import CustomLoginRequiredMixin
+from django.db.models import ProtectedError
+from django.contrib import messages
+from django.shortcuts import redirect
 
 
 class IndexView(CustomLoginRequiredMixin, ListView):
@@ -35,3 +38,11 @@ class StatusDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses')
     success_message = "Статус успешно удален"
+    context_object_name = 'status'
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return self.delete(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(self.request, 'Невозможно удалить cстатус потому что он используется')
+            return redirect(self.success_url)

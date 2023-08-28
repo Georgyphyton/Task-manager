@@ -12,6 +12,7 @@ django = "^4.2.4"
 python-dotenv = "^1.0.0"
 django-bootstrap5 = "^23.3"
 flake8 = "^6.1.0"
+django-filter = "^23.2"
 
 
 [build-system]

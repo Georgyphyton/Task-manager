@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}
-{% trans "Statuses" %}
+{% trans "labels" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Статусы</h1>
-    <a class="btn btn-primary" href="/statuses/create/">Создать статус</a>
+<h1 class="my-4">Метки</h1>
+    <a class="btn btn-primary" href="{% url 'create_label' %}">Создать метку</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -16,15 +16,15 @@
         </tr>
       </thead>
       <tbody>
-        {% for status in statuses %}
+        {% for label in labels %}
           <tr>
-            <td>{{status.pk}}</td>
-            <td>{{status.name}}</td>
-            <td>{{status.created_at}}</td>
+            <td>{{label.pk}}</td>
+            <td>{{label.name}}</td>
+            <td>{{label.created_at}}</td>
             <td>
-              <a href="{% url 'update_status' status.pk %}">Изменить</a>
+              <a href="{% url 'update_label' label.pk %}">Изменить</a>
               <br>
-              <a href="{% url 'delete_status' status.pk %}">Удалить</a>
+              <a href="{% url 'delete_label' label.pk %}">Удалить</a>
             </td>
           </tr>
           {% endfor %}

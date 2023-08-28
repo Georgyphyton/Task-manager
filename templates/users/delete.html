@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <h1 class="my-4">Удаление пользователя</h1>
-<p>Вы уверены, что хотите удалить {{user.name}} {{user.second_name}}?</p>
+<p>Вы уверены, что хотите удалить {{user.first_name}} {{  user.last_name }}?</p>
 <form method="post" >
     {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="Да, удалить">

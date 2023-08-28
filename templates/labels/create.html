@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% block title %}
+{% trans "Create label" %}
+{% endblock %}
+{% block content %}
+<h1 class="my-4">Создать метку</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {% bootstrap_form form %}
+    </div>
+    <input class="btn btn-primary" type="submit" value="Создать">
+</form>
+{% endblock %}

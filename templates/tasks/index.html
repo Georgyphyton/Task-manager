@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% block title %}
+{% trans "Tasks" %}
+{% endblock %}
+{% block content %}
+<h1 class="my-4">Задачи</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'create_task' %}">Создать задачу</a>
+    <div class="card mb-3">
+      <div class="card-body bg-light">
+    <form class="form-inline center" method="get">
+      {% csrf_token %}
+      <div class="mb-3">
+        {% bootstrap_form filter.form %}
+        </div>
+        <input class="btn btn-primary" type="submit" value="Показать">
+    </form>
+    </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Статус</th>
+          <th>Автор</th>
+          <th>Исполнитель</th>
+          <th>Дата создания</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr>
+            <td>{{task.pk}}</td>
+            <td><a href="{% url 'task' task.pk %}">{{task.name}}</a></td>
+            <td>{{task.status}}</td>
+            <td>{{task.author}}</td>
+            <td>{{task.executor|default_if_none:''}}</td>
+            <td>{{task.created_at}}</td>
+            <td>
+              <a href="{% url 'update_task' task.pk %}">Изменить</a>
+              <br>
+              <a href="{% url 'delete_task' task.pk %}">Удалить</a>
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+    </table>
+{% endblock %}

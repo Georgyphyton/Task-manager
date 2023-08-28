@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Statuses" %}
+{% endblock %}
+{% block content %}
+<h1 class="my-4">Статусы</h1>
+    <a class="btn btn-primary" href="{% url 'create_status' %}">Создать статус</a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Дата создания</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for status in statuses %}
+          <tr>
+            <td>{{status.pk}}</td>
+            <td>{{status.name}}</td>
+            <td>{{status.created_at}}</td>
+            <td>
+              <a href="{% url 'update_status' status.pk %}">Изменить</a>
+              <br>
+              <a href="{% url 'delete_status' status.pk %}">Удалить</a>
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+    </table>
+{% endblock %}
