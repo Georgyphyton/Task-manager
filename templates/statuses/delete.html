@@ -4,10 +4,10 @@
 {% trans "Delete status" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Удаление статуса</h1>
-<p>Вы уверены, что хотите удалить {{status.name}}?</p>
+<h1 class="my-4">{% trans "Deleting a status" %}</h1>
+<p>{% trans "Are you sure you want to delete" %} {{status.name}}?</p>
 <form method="post" >
     {% csrf_token %}
-    <input class="btn btn-danger" type="submit" value="Да, удалить">
+    <input class="btn btn-danger" type="submit" value="{% trans 'Yes, delete' %}">
 </form>
 {% endblock %}

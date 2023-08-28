@@ -4,10 +4,10 @@
 {% trans "Delete user" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Удаление пользователя</h1>
-<p>Вы уверены, что хотите удалить {{user.first_name}} {{  user.last_name }}?</p>
+<h1 class="my-4">{% trans "Deleting a user" %}</h1>
+<p>{% trans "Are you sure you want to delete" %} {{user.first_name}} {{  user.last_name }}?</p>
 <form method="post" >
     {% csrf_token %}
-    <input class="btn btn-danger" type="submit" value="Да, удалить">
+    <input class="btn btn-danger" type="submit" value="{% trans 'Yes, delete' %}">
 </form>
 {% endblock %}

@@ -5,7 +5,7 @@
 {{ task.name }}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Просмотр задачи</h1>     
+<h1 class="my-4">{% trans 'Viewing a task' %}</h1>     
 <div class="card">
     <div class="card-header bg-secondary text-white">
     <h2>{{ task.name }}</h2>
@@ -14,24 +14,24 @@
         <hr>
         <div class="container">
           <div class="row p-1">
-            <div class="col">Автор</div>
-            <div class="col">{{ task.author }}</div>
+            <div class="col">{% trans 'Author' %}</div>
+            <div class="col">{{task.author.first_name}} {{task.author.last_name}}</div>
           </div>
           <div class="row p-1">
-            <div class="col">Исполнитель</div>
-            <div class="col">{{ task.executor }}</div>
+            <div class="col">{% trans 'Executor' %}</div>
+            <div class="col">{{task.executor.first_name|default_if_none:''}} {{task.executor.last_name|default_if_none:''}}</div>
           </div>
           <div class="row p-1">
-            <div class="col">Статус</div>
+            <div class="col">{% trans 'Status' %}</div>
             <div class="col">{{ task.status }}</div>
           </div>
           <div class="row p-1">
-            <div class="col">Дата создания</div>
+            <div class="col">{% trans "Date of creation" %}</div>
             <div class="col">{{ task.created_at }}</div>
           </div>
           <div class="row p-1">
             <div class="col">
-              <h6>Метки:</h6>
+              <h6>{% trans "Labels" %}:</h6>
               <ul>
                 {% for label in task.labels.all %}
                 
@@ -42,9 +42,9 @@
           </div>
           <div class="row p-1">
             <div class="col">
-              <a href="{% url 'update_task' task.pk %}">Изменить</a>
+              <a href="{% url 'update_task' task.pk %}">{% trans "To change" %}</a>
               <br>
-              <a href="{% url 'delete_task' task.pk %}">Удалить</a>
+              <a href="{% url 'delete_task' task.pk %}">{% trans "Remove" %}</a>
             </div>
           </div>
         </div>

@@ -1,0 +1,31 @@
+name: Django CI
+
+on:
+  - push
+
+env:
+    SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install poetry flake8
+          make install
+      - name: Run linter
+        run: make lint
+      - name: Run tests
+        run: make test
+      - name: Code Coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE }}
+        with:
+          coverageCommand: make test-coverage

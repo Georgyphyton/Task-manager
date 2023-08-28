@@ -4,14 +4,14 @@
 {% trans "Users" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Пользователи</h1>  
+<h1 class="my-4">{% trans "Users" %}</h1>  
 <table class="table table-striped">
     <thead>
         <tr>
           <th>ID</th>
-          <th>Имя пользователя</th>
-          <th>Полное имя</th>
-          <th>Дата создания</th>
+          <th>{% trans "Username" %}</th>
+          <th>{% trans "Full name" %}</th>
+          <th>{% trans "Date of creation" %}</th>
           <th></th>
         </tr>
       </thead>
@@ -23,9 +23,9 @@
         <td>{{user.first_name}} {{  user.last_name }}</td>
         <td>{{user.date_joined}}</td>
         <td>
-            <a href="{% url 'update_user' user.id %}">Изменить</a>
+            <a href="{% url 'update_user' user.id %}">{% trans "To change" %}</a>
             <br>
-            <a href="{% url 'delete_user' user.id %}">Удалить</a>
+            <a href="{% url 'delete_user' user.id %}">{% trans "Remove" %}</a>
           </td>
     </tr>
     {% endfor %}

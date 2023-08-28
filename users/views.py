@@ -8,6 +8,7 @@ from users.models import CustomUser
 from task_manager.mixins import CustomLoginRequiredMixin, UserOwnerMixin
 from django.db.models import ProtectedError
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 class IndexView(View):
@@ -25,14 +26,14 @@ class RegisterView(SuccessMessageMixin, CreateView):
     model = CustomUser
     template_name = 'users/create.html'
     success_url = reverse_lazy('login')
-    success_message = "Пользователь добавлен"
+    success_message = _("The user has been successfully registered")
 
 
 class UserEditView(UserOwnerMixin, CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = CreateUserForm
     model = CustomUser
     template_name = 'users/update.html'
-    success_message = "Пользователь изменен"
+    success_message = _("User successfully changed")
     success_url = reverse_lazy('users')
 
 
@@ -40,12 +41,12 @@ class UserDeleteView(UserOwnerMixin, CustomLoginRequiredMixin, SuccessMessageMix
     model = CustomUser
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users')
-    success_message = "Пользователь удален"
+    success_message = _("The user has been successfully deleted")
     context_object_name = 'user'
 
     def post(self, request, *args, **kwargs):
         try:
-            return self.delete(request, *args, **kwargs)
+            return super().post(request, *args, **kwargs)
         except ProtectedError:
-            messages.error(self.request, 'Невозможно удалить пользователя, потому что он используется')
+            messages.error(self.request, _("It is not possible to delete a user because it is being used"))
             return redirect(self.success_url)

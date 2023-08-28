@@ -122,9 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 FIXTURE_DIRS = ['fixtures']
 AUTH_USER_MODEL = 'users.CustomUser'
 LANGUAGE_CODE = 'en-us'
-LANGUAGES = (
-    ('en-us', gettext_lazy('English')),
-    ('ru', gettext_lazy('Russian')))
+
 
 TIME_ZONE = 'UTC'
 

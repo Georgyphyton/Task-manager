@@ -5,12 +5,12 @@
 {% trans "Login" %}
 {% endblock %}
 {% block content %}
-<h1 class="my-4">Вход</h1>
+<h1 class="my-4">{% trans "Entrance" %}</h1>
 <form method="post">
     {% csrf_token %}
     <div class="mb-3">
         {% bootstrap_form form %}
     </div>
-    <input class="btn btn-primary" type="submit" value="Войти">
+    <input class="btn btn-primary" type="submit" value="{% trans 'Enter' %}">
 </form>
 {% endblock %}
