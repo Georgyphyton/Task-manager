@@ -73,7 +73,7 @@ class Testtasks(TestCase):
     def test_form_with_empty_data(self):
         task_from = CreateTaskForm({})
         self.assertTrue(task_from.is_valid)
-        self.assertEqual(len(task_from.errors), 2)
+        self.assertEqual(len(task_from.errors), 3)
 
     def test_get_update_page(self):
         response = self.client.get(self.create_task_url)
