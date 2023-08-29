@@ -94,4 +94,5 @@ class TestLabels(TestCase):
         response = self.client.post(self.delete_pk1_url)
         self.assertEqual(Labels.objects.count(), labels_count)
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn(_('It is not possible to delete the label because it is being used'), messages)
+        self.assertIn(_('It is not possible to delete the label because it is being used'),
+                      messages)

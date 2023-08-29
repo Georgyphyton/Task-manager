@@ -13,7 +13,8 @@ class Tasks(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
     executor = models.ForeignKey(CustomUser, on_delete=models.PROTECT, verbose_name=_("Executor"),
                                  related_name='executor', null=True)
-    labels = models.ManyToManyField(Labels, through='Relations', blank=True, verbose_name=_("Labels"))
+    labels = models.ManyToManyField(Labels, through='Relations', blank=True,
+                                    verbose_name=_("Labels"))
 
     def __str__(self):
         return self.name

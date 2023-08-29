@@ -45,5 +45,6 @@ class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView)
         try:
             return super().post(request, *args, **kwargs)
         except ProtectedError:
-            messages.error(self.request, _('It is not possible to delete the label because it is being used'))
+            messages.error(self.request,
+                           _('It is not possible to delete the label because it is being used'))
             return redirect(self.success_url)
