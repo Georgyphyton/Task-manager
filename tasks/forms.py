@@ -28,7 +28,8 @@ class SearchFilter(django_filters.FilterSet):
         queryset=CustomUser.objects.all()
     )
     labels = django_filters.ModelChoiceFilter(
-        queryset=Labels.objects.all()
+        queryset=Labels.objects.all(),
+        label=_("Label")
     )
     author = django_filters.BooleanFilter(
         widget=forms.CheckboxInput(),

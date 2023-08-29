@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 14:06+0400\n"
+"POT-Creation-Date: 2023-08-29 16:44+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,11 @@ msgstr "Вы залогинены"
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
-#: tasks/forms.py:35
+#: tasks/forms.py:32
+msgid "Label"
+msgstr "Метка"
+
+#: tasks/forms.py:36
 msgid "Only your own tasks"
 msgstr "Только свои задачи"
 
@@ -87,17 +91,17 @@ msgid "Description"
 msgstr "Описание"
 
 #: tasks/models.py:12 templates/tasks/index.html:26
-#: templates/tasks/task.html:25
+#: templates/tasks/task.html:26
 msgid "Status"
 msgstr "Статус"
 
 #: tasks/models.py:14 templates/tasks/index.html:28
-#: templates/tasks/task.html:21
+#: templates/tasks/task.html:22
 msgid "Executor"
 msgstr "Исполнитель"
 
 #: tasks/models.py:16 templates/base.html:20 templates/labels/index.html:4
-#: templates/labels/index.html:7 templates/tasks/task.html:34
+#: templates/labels/index.html:7 templates/tasks/task.html:35
 msgid "Labels"
 msgstr "Метки"
 
@@ -192,21 +196,21 @@ msgid "Yes, delete"
 msgstr "Да, удалить"
 
 #: templates/labels/index.html:14 templates/statuses/index.html:14
-#: templates/tasks/index.html:29 templates/tasks/task.html:29
+#: templates/tasks/index.html:29 templates/tasks/task.html:30
 #: templates/users/index.html:14
 msgid "Date of creation"
 msgstr "Дата создания"
 
 #: templates/labels/index.html:25 templates/labels/update.html:14
 #: templates/statuses/index.html:25 templates/statuses/update.html:14
-#: templates/tasks/index.html:43 templates/tasks/task.html:45
+#: templates/tasks/index.html:43 templates/tasks/task.html:46
 #: templates/tasks/update.html:14 templates/users/index.html:26
 #: templates/users/update.html:14
 msgid "To change"
 msgstr "Изменить"
 
 #: templates/labels/index.html:27 templates/statuses/index.html:27
-#: templates/tasks/index.html:45 templates/tasks/task.html:47
+#: templates/tasks/index.html:45 templates/tasks/task.html:48
 #: templates/users/index.html:28
 msgid "Remove"
 msgstr "Удалить"
@@ -271,7 +275,7 @@ msgstr "Удаление задачи"
 msgid "Show"
 msgstr "Показать"
 
-#: templates/tasks/index.html:27 templates/tasks/task.html:17
+#: templates/tasks/index.html:27 templates/tasks/task.html:18
 msgid "Author"
 msgstr "Автор"
 
