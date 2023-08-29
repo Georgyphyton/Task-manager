@@ -6,6 +6,7 @@ from users.models import CustomUser
 from tasks.models import Tasks
 from tasks.forms import CreateTaskForm
 from django.contrib.messages import get_messages
+from django.utils.translation import gettext_lazy as _
 import os
 import json
 
@@ -109,4 +110,4 @@ class Testtasks(TestCase):
         response = self.client.post(self.delete_pk2_url)
         self.assertEqual(Tasks.objects.count(), task_count)
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn('A task can only be deleted by its author', messages)
+        self.assertIn(_('A task can only be deleted by its author'), messages)

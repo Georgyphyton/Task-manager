@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 13:50+0400\n"
+"POT-Creation-Date: 2023-08-29 14:06+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,10 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
+#: labels/tests.py:97 labels/views.py:48
+msgid "It is not possible to delete the label because it is being used"
+msgstr "Невозможно удалить метку, потому что она используется"
+
 #: labels/views.py:26
 msgid "The label was created successfully"
 msgstr "Метка успешно создана"
@@ -37,10 +41,6 @@ msgstr "Метка успешно изменена"
 #: labels/views.py:41
 msgid "The label was successfully deleted"
 msgstr "Метка успешно удалена"
-
-#: labels/views.py:48
-msgid "It is not possible to delete the label because it is being used"
-msgstr "Невозможно удалить метку, потому что она используется"
 
 #: statuses/views.py:26
 msgid "Status successfully created"
@@ -62,7 +62,7 @@ msgstr "Невозможно удалить статус, потому что о
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/mixins.py:18
+#: task_manager/mixins.py:18 tasks/tests.py:113
 msgid "A task can only be deleted by its author"
 msgstr "Задачу может удалить только ее автор"
 
@@ -195,7 +195,7 @@ msgstr "Да, удалить"
 #: templates/tasks/index.html:29 templates/tasks/task.html:29
 #: templates/users/index.html:14
 msgid "Date of creation"
-msgstr "	Дата создания"
+msgstr "Дата создания"
 
 #: templates/labels/index.html:25 templates/labels/update.html:14
 #: templates/statuses/index.html:25 templates/statuses/update.html:14
@@ -293,7 +293,7 @@ msgstr "Создать пользователя"
 
 #: templates/users/create.html:14
 msgid "Registr"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
 #: templates/users/delete.html:4
 msgid "Delete user"
@@ -328,8 +328,8 @@ msgid ""
 msgstr ""
 "\n"
 "        <ul><li>Ваш пароль должен содержать как минимум из 8\n"
-"        символов</li><li>Пароль должен состоять из цифр и букв</"
-"li></ul>"
+"        символов</li><li>Пароль должен состоять из цифр и букв</li></ul>"
+
 #: users/views.py:29
 msgid "The user has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
