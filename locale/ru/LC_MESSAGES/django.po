@@ -225,7 +225,7 @@ msgstr "Войти"
 
 #: templates/login.html:14
 msgid "Enter"
-msgstr "Вход"
+msgstr "Войти"
 
 #: templates/statuses/create.html:5
 msgid "Create status"
