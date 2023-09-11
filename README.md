@@ -17,11 +17,11 @@ P.S.: You will need to register to try all the features in demo.
 
 Clone the repository:
 
-`git clone https://github.com/M1RRoN/python-project-52.git`
+`git clone https://github.com/Georgyphyton/task_manager.git`
 
 Go to the project folder:
 
-`cd python-project-52`
+`cd task_manager`
 
 Install dependencies with Poetry:
 
